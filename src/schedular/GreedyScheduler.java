@@ -76,4 +76,28 @@ public class GreedyScheduler {
 
         return false;
     }
+    
+    public double calculatePenalty(
+            Map<String, Integer> assignment,
+            List<Task> tasks) {
+
+        double penalty = 0;
+
+        for (Task task : tasks) {
+
+            int slot = assignment.get(task.getTaskId());
+
+            // Base weighted delay penalty
+            penalty += task.getWeight() * slot;
+        }
+
+        // Load imbalance penalty
+        double imbalancePenalty = 0;
+
+        for (Slot slot : slots) {
+            imbalancePenalty += slot.getAssignedTasks().size();
+        }
+
+        return penalty + imbalancePenalty;
+    }
 }

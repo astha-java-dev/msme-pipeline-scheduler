@@ -29,7 +29,6 @@ public class Main {
 
         List<Task> tasks = new ArrayList<>();
 
-        // Sample tasks
         tasks.add(new Task(
                 "T1",
                 8,
@@ -73,7 +72,6 @@ public class Main {
                 scheduler.scheduleTasks(tasks);
 
         System.out.println("Final Assignment:");
-
         for (Map.Entry<String, Integer> entry
                 : result.entrySet()) {
 
@@ -83,5 +81,11 @@ public class Main {
                             + entry.getValue()
             );
         }
+
+        double penalty =
+                scheduler.calculatePenalty(result, tasks);
+
+        System.out.println("Total Penalty: "
+                + penalty);
     }
 }
