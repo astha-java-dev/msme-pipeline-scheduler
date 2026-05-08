@@ -1,4 +1,5 @@
 package model;
+import java.util.List;
 
 public class Task {
 
@@ -13,10 +14,11 @@ public class Task {
 
     private int startSlot;
     private int endSlot;
+    private List<String> conflicts;
 
     public Task(String taskId, double cpu, double ram, double gpu,
                 double network, double weight,
-                int startSlot, int endSlot) {
+                int startSlot, int endSlot, List<String> conflicts) {
 
         this.taskId = taskId;
         this.cpu = cpu;
@@ -26,6 +28,7 @@ public class Task {
         this.weight = weight;
         this.startSlot = startSlot;
         this.endSlot = endSlot;
+        this.conflicts = conflicts;
     }
 
     public String getTaskId() {
@@ -58,6 +61,9 @@ public class Task {
 
     public int getEndSlot() {
         return endSlot;
+    }
+    public List<String> getConflicts() {
+        return conflicts;
     }
 
     @Override
